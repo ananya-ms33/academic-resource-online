@@ -1,32 +1,13 @@
-<h1>Admin Dashboard</h1>
+<h2>Admin Dashboard</h2>
 
-<h2>Resources</h2>
-
-<div *ngFor="let r of resources">
-
-<p>Title: {{r.title}}</p>
-<p>Link: {{r.link}}</p>
-
-<button (click)="deleteresource(r._id)">
-Delete
-</button>
-
-<hr>
-
+<h3>Resources</h3>
+<div *ngFor="let r of resources" style="margin-bottom: 10px; padding:5px; border: 1px solid #ccc;">
+  <p>{{ r.title }} — <a [href]="r.link" target="_blank">{{ r.link }}</a></p>
+  <button (click)="deleteresource(r._id)">Delete</button>
 </div>
 
-
-<h2>Experiences</h2>
-
-<div *ngFor="let e of experiences">
-
-<p>Company: {{e.company}}</p>
-<p>Experience: {{e.content}}</p>
-
-<button (click)="deleteexperience(e._id)">
-Delete
-</button>
-
-<hr>
-
+<h3>Experiences</h3>
+<div *ngFor="let e of experiences" style="margin-bottom: 10px; padding:5px; border: 1px solid #ccc;">
+  <p>{{ e.company }} — {{ e.content }}</p>
+  <button (click)="deleteexperience(e._id)">Delete</button>
 </div>
