@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core'
+import { AdminComponent } from './admin/admin'
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+selector: 'app-root',
+standalone: true,
+imports: [AdminComponent],
+templateUrl: './app.html'
 })
+
 export class App {
-  protected readonly title = signal('admin-angular');
+
 }

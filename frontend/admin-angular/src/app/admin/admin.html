@@ -1,0 +1,32 @@
+<h1>Admin Dashboard</h1>
+
+<h2>Resources</h2>
+
+<div *ngFor="let r of resources">
+
+<p>Title: {{r.title}}</p>
+<p>Link: {{r.link}}</p>
+
+<button (click)="deleteresource(r._id)">
+Delete
+</button>
+
+<hr>
+
+</div>
+
+
+<h2>Experiences</h2>
+
+<div *ngFor="let e of experiences">
+
+<p>Company: {{e.company}}</p>
+<p>Experience: {{e.content}}</p>
+
+<button (click)="deleteexperience(e._id)">
+Delete
+</button>
+
+<hr>
+
+</div>

@@ -1,56 +1,84 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import users from './users.json';
+import {useState} from "react"
+import {useNavigate} from "react-router-dom"
 
-function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+function Login(){
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+const [username,setusername]=useState("")
+const [password,setpassword]=useState("")
 
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
+const navigate=useNavigate()
 
-    if (user) {
-      navigate('/dashboard');
-    } else {
-      setError('Invalid username or password');
-    }
-  };
+const handlelogin=async(e)=>{
 
-  return (
-    <div style={{ margin: '50px' }}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username: </label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div style={{ marginTop: '10px' }}>
-          <label>Password: </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit" style={{ marginTop: '10px' }}>
-          Login
-        </button>
-      </form>
-    </div>
-  );
+e.preventDefault()
+
+const res = await fetch("http://localhost:3000/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({username,password})
+
+})
+
+const data = await res.json()
+
+if(data.success){
+
+if(data.role==="student"){
+navigate("/resources")
 }
 
-export default Login;
+if(data.role==="admin"){
+window.location.href="http://localhost:4200"
+}
+
+}
+
+else{
+
+alert("invalid login")
+
+}
+
+}
+
+return(
+
+<div>
+
+<h2>Login</h2>
+
+<form onSubmit={handlelogin}>
+
+<input
+placeholder="username"
+value={username}
+onChange={(e)=>setusername(e.target.value)}
+/>
+
+<br/>
+
+<input
+type="password"
+placeholder="password"
+value={password}
+onChange={(e)=>setpassword(e.target.value)}
+/>
+
+<br/>
+
+<button>Login</button>
+
+</form>
+
+</div>
+
+)
+
+}
+
+export default Login

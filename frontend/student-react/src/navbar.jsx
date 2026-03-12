@@ -1,15 +1,20 @@
-import { Link } from 'react-router-dom';
+import {Link} from "react-router-dom"
 
-function Navbar() {
-  return (
-    <nav style={{ marginBottom: '20px' }}>
-      <Link to="/dashboard">Dashboard</Link> |{' '}
-      <Link to="/resources">Resources</Link> |{' '}
-      <Link to="/submitresource">Submit Resource</Link> |{' '}
-      <Link to="/experiences">Placement Experiences</Link> |{' '}
-      <Link to="/shareexperience">Share Experience</Link>
-    </nav>
-  );
+function Navbar(){
+
+return(
+
+<div style={{marginBottom:"20px"}}>
+
+<Link to="/resources">Resources</Link> | {" "}
+<Link to="/submitresource">Submit Resource</Link> | {" "}
+<Link to="/experiences">Experiences</Link> | {" "}
+<Link to="/shareexperience">Share Experience</Link>
+
+</div>
+
+)
+
 }
 
-export default Navbar;
+export default Navbar

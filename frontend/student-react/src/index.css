@@ -10,27 +10,49 @@
 body {
   background-color: #f4f6f8;
   color: #222;
+  min-height: 100vh;
+}
+
+/* Navbar */
+nav {
+  width: 100%;
+  background: #1a1a2e;
+  padding: 14px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  gap: 35px;
+  position: sticky;
+  top: 0;
+}
+
+nav a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: #0077ff;
 }
 
 /* Login Card */
 .login-card {
   background: #fff;
-  width: 300px;
-  padding: 25px;
+  width: 320px;
+  padding: 28px;
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
   text-align: center;
+  margin: 120px auto;
 }
 
-/* Login Header */
 .login-card h2 {
   margin-bottom: 20px;
-  color: #1a1a2e;
   font-size: 1.4rem;
+  color: #1a1a2e;
 }
 
 /* Inputs */
@@ -42,13 +64,10 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 0.95rem;
-  transition: 0.2s;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+input:focus {
   border-color: #0077ff;
-  box-shadow: 0 0 5px rgba(0,119,255,0.3);
   outline: none;
 }
 
@@ -57,77 +76,52 @@ button {
   width: 100%;
   padding: 10px;
   margin-top: 15px;
-  background-color: #0077ff;
-  color: #fff;
+  background: #0077ff;
+  color: white;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 button:hover {
-  background-color: #005fcc;
+  background: #005fcc;
 }
 
-/* Error Message */
-.error {
-  color: #ff4d4f;
-  margin-top: 8px;
-  font-size: 0.9rem;
-}
-
-/* Navbar */
-nav {
-  background-color: #1a1a2e;
-  padding: 10px 15px;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-nav a {
-  color: #f8f9fa;
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-nav a:hover {
-  color: #0077ff;
-  text-decoration: underline;
-}
-
-/* Dashboard */
+/* Dashboard container */
 .dashboard {
-  max-width: 900px;
-  width: 90%;
-  margin: 30px auto;
-  padding: 0 15px;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+/* Dashboard card */
+.dashboard-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
 }
 
 .dashboard h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
   color: #1a1a2e;
 }
 
 .dashboard p {
-  font-size: 1rem;
   color: #555;
-  margin-bottom: 20px;
+  font-size: 0.95rem;
 }
 
-/* Small adjustments for responsive screens */
-@media (max-width: 500px) {
-  .login-card {
-    width: 90%;
-    padding: 20px;
+/* Mobile */
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  nav a {
-    display: block;
-    margin: 5px 0;
+  .login-card {
+    width: 90%;
   }
 }
