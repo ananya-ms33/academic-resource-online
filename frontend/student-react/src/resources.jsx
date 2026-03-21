@@ -14,11 +14,11 @@ function Resources() {
 
   }, [])
 
-  function handleDelete(id) {
+  function deletepost(id) {
     if (window.confirm("Are you sure you want to delete this resource?")) {
       fetch(`${import.meta.env.VITE_API_URL}/deleteresource/${id}`, { method: "DELETE" })
         .then(() => {
-          setArr(arr.filter(r => r._id !== id)); // Remove from screen immediately
+          setArr(arr.filter(r => r._id !== id)); // Removes from screen immediately (doesnt access db again to fetch)
         });
     }
   }
@@ -39,13 +39,12 @@ function Resources() {
                 <h3 className="restitle">{r.title}</h3>
                 <a href={r.link} target="_blank" className="openbtn">Open resource</a>
               </div>
-
-              {/* Only show delete if I am the one who posted it! */}
+              {/* delte option shown only to people who posted that */}
               {r.username === localStorage.getItem('username') && (
-                <button 
-                  onClick={() => handleDelete(r._id)} 
-                  className="logoutbtn" 
-                  style={{marginTop: '15px', color: '#ef4444', borderColor: '#ef4444'}}
+                <button
+                  onClick={() => deletepost(r._id)}
+                  className="logoutbtn"
+                  style={{ marginTop: '15px', color: '#ef4444', borderColor: '#ef4444' }}
                 >
                   Delete My Post
                 </button>

@@ -21,10 +21,10 @@ function SubmitResource() {
         "Content-Type": "application/json"
       },
 
-      body: JSON.stringify({ 
-        title, 
+      body: JSON.stringify({
+        title,
         link,
-        username: localStorage.getItem('username') // Tell the backend who I am
+        username: localStorage.getItem('username')
       })
 
     })
@@ -49,7 +49,7 @@ function SubmitResource() {
 
             <input type="text" placeholder="Resource Title" value={title} onChange={(e) => settitle(e.target.value)} required />
 
-            <input type="text" placeholder="Resource Link (URL)" value={link} onChange={(e) => setlink(e.target.value)} required />
+            <input type="text" placeholder="Resource Link (URL) - Can be google drive, one drive etc." value={link} onChange={(e) => setlink(e.target.value)} required />
 
             <button type="submit" className="subbtn2">Submit Resource</button>
 
