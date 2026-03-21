@@ -185,6 +185,30 @@ nav {
   margin-bottom: 20px;
 }
 
+.finp input, .finp textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  color: #334155;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.login input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  color: #334155;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+}
+
 .marqueecont {
   background: #1e40af;
   color: white;
