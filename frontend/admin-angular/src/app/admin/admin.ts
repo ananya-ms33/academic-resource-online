@@ -19,6 +19,18 @@ export class AdminComponent implements OnInit {
   expCount = computed(() => this.expArr().length);
 
   ngOnInit() {
+    // 1. Check if we just came from the login page with the "secret tag"
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('auth') === 'admin') {
+      localStorage.setItem('isAdmin', 'true');
+    }
+
+    // 2. If NO secret tag and NO previous login - kick them out!
+    if (localStorage.getItem('isAdmin') !== 'true') {
+      window.location.href = CONFIG.STUDENT_APP_URL;
+      return;
+    }
+
     this.http.get<any[]>(`${CONFIG.API_URL}/resources`).subscribe(data => {
       this.resArr.set(data);
     });
@@ -43,6 +55,7 @@ export class AdminComponent implements OnInit {
   }
 
   logout() {
+    localStorage.removeItem('isAdmin'); // Clear the "remember me" flag
     window.location.href = CONFIG.STUDENT_APP_URL;
   }
 }

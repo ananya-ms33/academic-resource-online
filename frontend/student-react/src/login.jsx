@@ -27,7 +27,7 @@ function Login() {
                 navigate("/resources")
             }
             if (data.role === "admin") {
-                window.location.href = import.meta.env.VITE_ADMIN_URL //redirect to angular part 
+                window.location.href = `${import.meta.env.VITE_ADMIN_URL}?auth=admin` //redirect with secret tag
             }
         } else {
             alert("invalid login")
