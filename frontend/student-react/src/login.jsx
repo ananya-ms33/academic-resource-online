@@ -23,12 +23,12 @@ function Login() {
         const data = await res.json()
 
         if (data.success) {
-            localStorage.setItem('username', username); // Save who is logged in!
+            localStorage.setItem('username', username);  // username key stores the value of username
             if (data.role === "student") {
                 navigate("/resources")
             }
             if (data.role === "admin") {
-                window.location.href = `${import.meta.env.VITE_ADMIN_URL}?auth=admin` //redirect with secret tag
+                window.location.href = `${import.meta.env.VITE_ADMIN_URL}?auth=admin`
             }
         } else {
             alert("invalid login")

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import './App.css';
+import './App.css'
 
 function Navbar() {
 
@@ -7,8 +7,12 @@ function Navbar() {
 
   return (
     <div className="headercont">
-      <h1 className="projtitle">CSEA Resource Hub</h1>
-
+      <div className="titlewrap">
+        <div className="titlebox">
+          <h1 className="projtitle">CSEA Resource Hub</h1>
+        </div>
+      </div>
+      
       <nav>
         <div className="navlinks">
           <Link to="/resources">Resources</Link>
@@ -22,7 +26,7 @@ function Navbar() {
 
       <div className="marqueecont">
         <div className="marqueetext">
-          Happy Learning!
+          Happy Learning! 🎉 Support the CSEA Department by sharing quality resources! 🚀 Stay updated for more features!
         </div>
       </div>
     </div>

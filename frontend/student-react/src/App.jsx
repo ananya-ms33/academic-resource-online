@@ -9,19 +9,19 @@ const ShareExperience = React.lazy(() => import("./shareexperience"))
 // suspense - content that is to be shown when the page is loading (like a msg)
 function App() {
 
-    return (
-        <BrowserRouter>
-            <Suspense fallback={<div style={{ textAlign: 'center', padding: '20px' }}>Loading page...</div>}>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/resources" element={<Resources />} />
-                    <Route path="/submitresource" element={<SubmitResource />} />
-                    <Route path="/experiences" element={<Experiences />} />
-                    <Route path="/shareexperience" element={<ShareExperience />} />
-                </Routes>
-            </Suspense>
-        </BrowserRouter>
-    )
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<div style={{ textAlign: 'center', padding: '20px' }}>Loading page...</div>}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/submitresource" element={<SubmitResource />} />
+          <Route path="/experiences" element={<Experiences />} />
+          <Route path="/shareexperience" element={<ShareExperience />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  )
 }
 
 export default App

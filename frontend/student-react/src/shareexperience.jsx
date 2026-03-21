@@ -1,8 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Navbar from "./navbar"
 import Footer from "./Footer"
-import { useNavigate } from "react-router-dom"
-import './App.css';
+import './App.css'
 
 function ShareExperience() {
 
@@ -10,52 +10,35 @@ function ShareExperience() {
   const [content, setcontent] = useState("")
   const navigate = useNavigate()
 
-  async function handlesubmit(e) {
-
-    e.preventDefault()
-
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/addexperience`, {
+  function add() {
+    const username = localStorage.getItem('username')
+    fetch(`${import.meta.env.VITE_API_URL}/addexperience`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ 
-        company, 
-        content,
-        username: localStorage.getItem('username')
-      })
-    })
-
-    alert("Experience shared!")
-    navigate("/experiences")
-
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ company, content, username })
+    }).then(() => navigate("/experiences"))
   }
 
   return (
-
     <div>
       <Navbar />
-
       <div className="db">
         <div className="loginpg2">
-          <h2 className="fhead">Share Experience</h2>
-          <form onSubmit={handlesubmit} className="fcont">
-
-            <input type="text" placeholder="Company Name" value={company} onChange={(e) => setcompany(e.target.value)} required className="finp" />
-
-            <textarea placeholder="Share your experience" value={content} onChange={(e) => setcontent(e.target.value)} required className="taip"></textarea>
-
-            <button type="submit" className="subbtn2">Share Experience</button>
-
-          </form>
-
+          <h2>Share Placement Experience</h2>
+          <div className="fcont">
+            <div className="finp">
+              <input placeholder="Company Name" onChange={(e) => setcompany(e.target.value)} />
+            </div>
+            <div className="finp">
+              <textarea placeholder="Share Your Experience" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #e2e8f0' }} onChange={(e) => setcontent(e.target.value)}></textarea>
+            </div>
+            <button className="subbtn" style={{ width: '100%', marginTop: '10px' }} onClick={add}> Share Now </button>
+          </div>
         </div>
       </div>
       <Footer />
     </div>
-
   )
-
 }
 
 export default ShareExperience

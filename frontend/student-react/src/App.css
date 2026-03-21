@@ -1,57 +1,71 @@
-/* Sticky Header Styles */
 .headercont {
   position: sticky;
   top: 0;
-  background-color: #111827;
+  background-color: #ffffff;
   z-index: 1000;
-  border-bottom: 1px solid #374151;
+  border-bottom: 2px solid #e2e8f0;
   width: 100%;
 }
 
-.projtitle {
+.titlebox {
+  border: 2px solid #1e3a8a;
+  display: inline-block;
+  padding: 10px 30px;
+  margin: 15px auto 10px auto;
+  border-radius: 8px;
+}
+
+.titlewrap {
   text-align: center;
+}
+
+.projtitle {
   margin: 0;
-  padding: 15px 0 5px 0;
-  color: #60a5fa;
+  color: #1e3a8a;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 nav {
-  background-color: #111827;
-  padding: 10px 20px;
+  background-color: #ffffff;
+  padding: 15px 20px;
   display: flex;
-  flex-direction: column; 
+  justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 15px;
 }
 
 .navlinks {
   display: flex;
   gap: 30px;
   align-items: center;
-  justify-content: center;
+}
+
+.navlinks a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+}
+
+.navlinks a:hover {
+  color: #1e3a8a;
 }
 
 .logoutbtn {
-  padding: 5px 12px;
-  background: rgba(79, 70, 229, 0.1);
-  border: 1px solid rgba(79, 70, 229, 0.2);
-  color: #4f46e5;
-  margin: 5px 0;
-  width: auto;
-  font-size: 0.8rem;
+  padding: 8px 16px;
+  background: #ef4444;
+  color: white;
+  border: none;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
 }
 
 .logoutbtn:hover {
-  background: rgba(79, 70, 229, 0.2);
+  background: #dc2626;
 }
 
 .dbh {
@@ -94,7 +108,6 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dbres:hover {
@@ -119,7 +132,6 @@ nav {
   color: #475569;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: background 0.2s;
 }
 
 .openbtn:hover {
@@ -140,7 +152,6 @@ nav {
   border: 1px solid rgba(0, 0, 0, 0.02);
   margin-bottom: 0;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dbexp:hover {
@@ -184,22 +195,40 @@ nav {
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.loginpg1 h2,
-.loginpg2 h2 {
-  margin-bottom: 24px;
-  font-size: 1.5rem;
+.login {
+  background: #ffffff;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  margin: 60px auto;
+}
+
+.login input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.login button {
+  width: 100%;
+  padding: 12px;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 8px;
   font-weight: 600;
-  color: #1e293b;
+  cursor: pointer;
 }
 
-.fhead {
-  margin-bottom: 10px;
-}
-
-.fsub {
-  margin-bottom: 24px;
-  color: #64748b;
-  font-size: 0.95rem;
+.msg1 {
+  margin-top: 20px;
+  cursor: pointer;
+  color: #1e3a8a;
 }
 
 .fcont {
@@ -210,13 +239,8 @@ nav {
   margin-bottom: 16px;
 }
 
-.subbtn2 {
-  margin-top: 24px;
-}
-
-/* Marquee Styles */
 .marqueecont {
-  background: linear-gradient(90deg, #1e3a8a, #1d4ed8);
+  background: #1e3a8a;
   color: white;
   padding: 10px 0;
   overflow: hidden;
@@ -235,25 +259,20 @@ nav {
   100% { transform: translateX(-100%); }
 }
 
-/* Sticky Footer Styles */
 .stickyfooter {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #111827;
-  color: #9ca3af;
+  background-color: #ffffff;
+  color: #475569;
   text-align: center;
   padding: 15px 0;
-  border-top: 1px solid #374151;
+  border-top: 1px solid #e2e8f0;
   font-size: 0.85rem;
   z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* Adjust page content to prevent overlap with sticky footer */
 .db {
   padding-bottom: 100px;
 }

@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react"
 import Navbar from "./navbar"
 import Footer from "./Footer"
-import './App.css';
+import './App.css'
 
 function Experiences() {
 
-  const [arr, setArr] = useState([])
+  const [arr, setarr] = useState([])
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/experiences`)
       .then(res => res.json())
-      .then(data => setArr(data))
+      .then(data => setarr(data))
   }, [])
 
   function deletepost(id) {
-    if (window.confirm("Are you sure you want to delete this experience?")) {
+    if (window.confirm("Are you sure?")) {
       fetch(`${import.meta.env.VITE_API_URL}/deleteexperience/${id}`, { method: "DELETE" })
         .then(() => {
-          setArr(arr.filter(e => e._id !== id));
-        });
+          setarr(arr.filter(e => e._id !== id))
+        })
     }
   }
 
@@ -26,34 +26,24 @@ function Experiences() {
     <div>
       <Navbar />
       <div className="db">
-
         <div className="dbh">
           <h2>Placement Experiences</h2>
           <a href="/shareexperience" className="subbtn">Share Experience</a>
         </div>
-
         <div className="explist">
           {arr.map((e) => (
             <div className="dbexp" key={e._id}>
               <h3 className="compname">{e.company}</h3>
               <p className="expinfo">{e.content}</p>
-
               {e.username === localStorage.getItem('username') && (
-                <button
-                  onClick={() => deletepost(e._id)}
-                  className="logoutbtn"
-                  style={{ marginTop: '15px', color: '#ef4444', borderColor: '#ef4444' }}
-                >
-                  Delete My Post
-                </button>
+                <button onClick={() => deletepost(e._id)} className="logoutbtn" style={{ marginTop: '15px', padding: '6px 14px' }}> Delete My Post </button>
               )}
             </div>
           ))}
         </div>
-
       </div>
+      <Footer />
     </div>
-
   )
 }
 
