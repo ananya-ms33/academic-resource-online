@@ -1,5 +1,5 @@
-<div class="admin-header-container">
-  <h1 class="admin-project-title">CSE Nexus</h1>
+<div class="adminheadercontainer">
+  <h1 class="adminprojecttitle">CSE Nexus</h1>
   <div class="adheader">
     <h2 class="maintitle">Admin Dashboard</h2>
     <div class="adstats">
@@ -15,17 +15,17 @@
     <div class="onead">
       <h3 class="text1">Manage Resources</h3>
       @for(r of resArr(); track $index) {
-      <div class="adcard adcont2">
+      <div class="adcont2">
         <h4 class="adtitle">{{ r.title }}</h4>
         <a [href]="r.link" target="_blank" class="adlink">
           {{ r.link }}
         </a>
-        <button class="adbtn deletebtn" (click)="deleteresource(r._id)">
+        <button class="addltbtn" (click)="deleteresource(r._id)">
           Delete Resource
         </button>
       </div>
       } @empty {
-      <div class="adtext emptysg">
+      <div class="emptymsg">
         No resources available.
       </div>
       }
@@ -34,17 +34,17 @@
     <div class="onead">
       <h3 class="text1">Manage Experiences</h3>
       @for(e of expArr(); track $index) {
-      <div class="adcard adcont2">
+      <div class="adcont2">
         <h4 class="adtitle2">{{ e.company }}</h4>
         <p class="adtext">
           {{ e.content }}
         </p>
-        <button class="adbtn deletebtn" (click)="deleteexperience(e._id)">
+        <button class="addltbtn" (click)="deleteexperience(e._id)">
           Delete Experience
         </button>
       </div>
       } @empty {
-      <div class="adtext emptysg">
+      <div class="emptymsg">
         No experiences available.
       </div>
       }
@@ -52,6 +52,6 @@
   </div>
 </div>
 
-<footer class="admin-sticky-footer">
+<footer class="adminstickyfooter">
   <p>© 2026 CSE Nexus Admin | Secure Management Interface</p>
 </footer>

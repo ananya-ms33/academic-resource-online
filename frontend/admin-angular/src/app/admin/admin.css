@@ -1,4 +1,4 @@
-.admin-header-container {
+.adminheadercontainer {
   position: sticky;
   top: 0;
   background-color: #f4f4f4;
@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.admin-project-title {
+.adminprojecttitle {
   text-align: center;
   margin: 0;
   padding: 15px 0 5px 0;
@@ -27,7 +27,7 @@
   margin: 0 auto;
 }
 
-.admin-sticky-footer {
+.adminstickyfooter {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -52,7 +52,6 @@
   color: #333;
 }
 
-
 .adwrap {
   display: flex;
   gap: 40px;
@@ -69,12 +68,18 @@
   color: #1e293b;
 }
 
-.emptysg {
+.emptymsg {
   margin-bottom: 20px;
+  color: #64748b;
+  font-style: italic;
 }
 
 .adcont2 {
   padding: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .adtitle {
@@ -103,12 +108,19 @@
   white-space: pre-wrap;
 }
 
-.deletebtn {
+.addltbtn {
   background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+  transition: all 0.2s;
 }
 
-.deletebtn:hover {
+.addltbtn:hover {
   background: #dc2626;
   box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
   transform: translateY(-2px);
