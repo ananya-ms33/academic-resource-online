@@ -7,11 +7,7 @@ function Navbar() {
 
   return (
     <div className="headercont">
-      <div className="titlewrap">
-        <div className="titlebox">
-          <h1 className="projtitle">CSEA Resource Hub</h1>
-        </div>
-      </div>
+      <h1 className="projtitle">CSEA Resource Hub</h1>
       
       <nav>
         <div className="navlinks">

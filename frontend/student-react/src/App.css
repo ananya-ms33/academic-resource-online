@@ -1,36 +1,26 @@
 .headercont {
   position: sticky;
   top: 0;
-  background-color: #ffffff;
+  background-color: #111827;
   z-index: 1000;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 1px solid #374151;
   width: 100%;
 }
 
-.titlebox {
-  border: 2px solid #1e3a8a;
-  display: inline-block;
-  padding: 10px 30px;
-  margin: 15px auto 10px auto;
-  border-radius: 8px;
-}
-
-.titlewrap {
-  text-align: center;
-}
-
 .projtitle {
+  text-align: center;
   margin: 0;
-  color: #1e3a8a;
+  padding: 15px 0 5px 0;
+  color: #60a5fa;
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 nav {
-  background-color: #ffffff;
-  padding: 15px 20px;
+  background-color: #111827;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,26 +36,30 @@ nav {
 
 .navlinks a {
   text-decoration: none;
-  color: #334155;
+  color: #94a3b8;
   font-weight: 500;
+  transition: color 0.2s;
 }
 
 .navlinks a:hover {
-  color: #1e3a8a;
+  color: #60a5fa;
 }
 
 .logoutbtn {
-  padding: 8px 16px;
-  background: #ef4444;
-  color: white;
-  border: none;
+  padding: 6px 16px;
+  background: rgba(79, 70, 229, 0.1);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  color: #4f46e5;
+  margin: 0;
+  width: auto;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .logoutbtn:hover {
-  background: #dc2626;
+  background: rgba(79, 70, 229, 0.2);
 }
 
 .dbh {
@@ -240,7 +234,7 @@ nav {
 }
 
 .marqueecont {
-  background: #1e3a8a;
+  background: linear-gradient(90deg, #1e3a8a, #132b6e);
   color: white;
   padding: 10px 0;
   overflow: hidden;
@@ -264,17 +258,20 @@ nav {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
-  color: #475569;
+  background-color: #111827;
+  color: #94a3b8;
   text-align: center;
-  padding: 15px 0;
-  border-top: 1px solid #e2e8f0;
+  padding: 12px 0;
+  border-top: 1px solid #374151;
   font-size: 0.85rem;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .db {
-  padding-bottom: 100px;
+  padding-bottom: 80px;
 }
 
 @media (max-width: 600px) {
