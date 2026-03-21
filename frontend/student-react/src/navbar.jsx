@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <div className="headercont">
       <h1 className="projtitle">CSEA Resource Hub</h1>
-
+      
       <nav>
         <div className="navlinks">
           <Link to="/resources">Resources</Link>
@@ -22,7 +22,7 @@ function Navbar() {
 
       <div className="marqueecont">
         <div className="marqueetext">
-          Happy Learning!!
+          Happy Learning!
         </div>
       </div>
     </div>
