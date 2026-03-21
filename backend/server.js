@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const { MongoClient, ObjectId } = require('mongodb')
@@ -7,10 +8,13 @@ app.use(express.json())
 app.use(cors())
 
 var db
-MongoClient.connect('mongodb://localhost:27017')
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017'
+const port = process.env.PORT || 3000
+
+MongoClient.connect(url)
     .then((client) => {
-        db = client.db('academicresourcehub')
-        app.listen(3000, () => { console.log('backend running on port 3000') })
+        db = client.db('academicresourcehub2')
+        app.listen(port, () => { console.log(`backend running on port ${port}`) })
     })
     .catch((err) => console.log(err))
 
@@ -81,7 +85,7 @@ app.post('/register', (req, res) => {
 })
 
 
-//count documents to count the result
+//count documents to count the result. it doesnt download any data just returns the count alone
 app.get('/stats', (req, res) => {
     db.collection('resources').countDocuments().then(resCount => {
         db.collection('experiences').countDocuments().then(expCount => {

@@ -13,7 +13,7 @@ function ShareExperience() {
 
     e.preventDefault()
 
-    await fetch("http://localhost:3000/addexperience", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/addexperience`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

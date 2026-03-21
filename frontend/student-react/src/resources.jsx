@@ -8,7 +8,7 @@ function Resources() {
 
   useEffect(() => {
 
-    fetch("http://localhost:3000/resources")
+    fetch(`${import.meta.env.VITE_API_URL}/resources`)
       .then(res => res.json())
       .then(data => setArr(data))
 

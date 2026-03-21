@@ -12,7 +12,7 @@ function Login() {
     async function handlelogin(e) {
         e.preventDefault()
 
-        const res = await fetch("http://localhost:3000/login", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -27,7 +27,7 @@ function Login() {
                 navigate("/resources")
             }
             if (data.role === "admin") {
-                window.location.href = "http://localhost:4200" //redirect to angular part 
+                window.location.href = import.meta.env.VITE_ADMIN_URL //redirect to angular part 
             }
         } else {
             alert("invalid login")
@@ -37,7 +37,7 @@ function Login() {
     async function handleregister(e) {
         e.preventDefault()
 
-        const res = await fetch("http://localhost:3000/register", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

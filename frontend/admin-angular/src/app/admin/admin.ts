@@ -1,5 +1,6 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CONFIG } from '../config';
 
 @Component({
   selector: 'app-admin',
@@ -18,30 +19,30 @@ export class AdminComponent implements OnInit {
   expCount = computed(() => this.expArr().length);
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:3000/resources').subscribe(data => {
+    this.http.get<any[]>(`${CONFIG.API_URL}/resources`).subscribe(data => {
       this.resArr.set(data);
     });
 
-    this.http.get<any[]>('http://localhost:3000/experiences').subscribe(data => {
+    this.http.get<any[]>(`${CONFIG.API_URL}/experiences`).subscribe(data => {
       this.expArr.set(data);
     });
   }
 
   deleteresource(id: any) {
-    this.http.delete('http://localhost:3000/deleteresource/' + id).subscribe(() => {
+    this.http.delete(`${CONFIG.API_URL}/deleteresource/${id}`).subscribe(() => {
       // We update the signal directly instead of refreshing the page
       this.resArr.set(this.resArr().filter(r => r._id !== id));
     });
   }
 
   deleteexperience(id: any) {
-    this.http.delete('http://localhost:3000/deleteexperience/' + id).subscribe(() => {
+    this.http.delete(`${CONFIG.API_URL}/deleteexperience/${id}`).subscribe(() => {
       // We update the signal directly instead of refreshing the page
       this.expArr.set(this.expArr().filter(e => e._id !== id));
     });
   }
 
   logout() {
-    window.location.href = 'http://localhost:5173';
+    window.location.href = CONFIG.STUDENT_APP_URL;
   }
 }
