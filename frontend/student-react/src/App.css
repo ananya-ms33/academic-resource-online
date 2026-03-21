@@ -180,3 +180,30 @@
 .subbtn2 {
   margin-top: 24px;
 }
+
+@media (max-width: 600px) {
+  .dbh {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .navlinks {
+    gap: 15px;
+    font-size: 0.9rem;
+  }
+
+  .res {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .dbres, .dbexp {
+    padding: 20px;
+  }
+
+  .loginpg1, .loginpg2 {
+    padding: 24px 16px;
+    margin: 20px 10px;
+  }
+}
