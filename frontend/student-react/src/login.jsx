@@ -51,7 +51,7 @@ function Login() {
             alert("Account successfully created! Login.")
             setloginorcreate(true) // set to login true
         } else {
-            alert("Error creating account.")
+            alert(data.message || "Error creating account.")
         }
     }
 

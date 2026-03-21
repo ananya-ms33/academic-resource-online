@@ -81,9 +81,16 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-    db.collection('users').insertOne({ username: req.body.username, password: req.body.password, role: "student" })
-        .then(() => {
-            res.json({ success: true })
+    db.collection('users').findOne({ username: req.body.username })
+        .then(user => {
+            if (user) {
+                res.json({ success: false, message: "Username already exists!" })
+            } else {
+                db.collection('users').insertOne({ username: req.body.username, password: req.body.password, role: "student" })
+                    .then(() => {
+                        res.json({ success: true })
+                    })
+            }
         })
 })
 
