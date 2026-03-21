@@ -19,13 +19,13 @@ export class AdminComponent implements OnInit {
   expCount = computed(() => this.expArr().length);
 
   ngOnInit() {
-    // 1. Check if we just came from the login page with the "secret tag"
+    //if we login as admin from the login pg
     const params = new URLSearchParams(window.location.search);
     if (params.get('auth') === 'admin') {
       localStorage.setItem('isAdmin', 'true');
     }
 
-    // 2. If NO secret tag and NO previous login - kick them out!
+    // if directly accessed move back to login page 
     if (localStorage.getItem('isAdmin') !== 'true') {
       window.location.href = CONFIG.STUDENT_APP_URL;
       return;
@@ -49,7 +49,6 @@ export class AdminComponent implements OnInit {
 
   deleteexperience(id: any) {
     this.http.delete(`${CONFIG.API_URL}/deleteexperience/${id}`).subscribe(() => {
-      // We update the signal directly instead of refreshing the page
       this.expArr.set(this.expArr().filter(e => e._id !== id));
     });
   }

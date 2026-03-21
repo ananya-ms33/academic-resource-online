@@ -12,6 +12,15 @@ function Experiences() {
       .then(data => setArr(data))
   }, [])
 
+  function handleDelete(id) {
+    if (window.confirm("Are you sure you want to delete this experience?")) {
+      fetch(`${import.meta.env.VITE_API_URL}/deleteexperience/${id}`, { method: "DELETE" })
+        .then(() => {
+          setArr(arr.filter(e => e._id !== id));
+        });
+    }
+  }
+
   return (
     <div>
       <Navbar />
@@ -24,12 +33,21 @@ function Experiences() {
 
         <div className="explist">
           {arr.map((e) => (
-
             <div className="dbexp" key={e._id}>
               <h3 className="compname">{e.company}</h3>
               <p className="expinfo">{e.content}</p>
-            </div>
 
+              {/* Only show delete if I am the one who posted it! */}
+              {e.username === localStorage.getItem('username') && (
+                <button 
+                  onClick={() => handleDelete(e._id)} 
+                  className="logoutbtn" 
+                  style={{marginTop: '15px', color: '#ef4444', borderColor: '#ef4444'}}
+                >
+                  Delete My Post
+                </button>
+              )}
+            </div>
           ))}
         </div>
 

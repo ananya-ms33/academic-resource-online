@@ -14,11 +14,11 @@ const port = process.env.PORT || 3000
 MongoClient.connect(url)
     .then((client) => {
         db = client.db('academicresourcehub2')
-        app.listen(port, () => { console.log(`✅ Backend is LIVE on port ${port}`) })
+        app.listen(port, () => { console.log(`Backend is running on port ${port}`) })
     })
     .catch((err) => {
-        console.error("❌ DATABASE CONNECTION ERROR:", err.message);
-        process.exit(1); // Force Render to show the error
+        console.error("db connection error", err.message);
+        process.exit(1);
     })
 
 app.get('/resources', (req, res) => {
