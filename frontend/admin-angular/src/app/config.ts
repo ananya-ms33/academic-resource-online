@@ -1,4 +1,4 @@
 export const CONFIG = {
-  API_URL: 'http://localhost:3000',
-  STUDENT_APP_URL: 'http://localhost:5173'
+  API_URL: 'https://academic-resource-online.onrender.com',
+  STUDENT_APP_URL: 'https://academic-resource-online-student.onrender.com'
 };
