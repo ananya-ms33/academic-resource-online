@@ -36,7 +36,7 @@ function Experiences() {
               <h3 className="compname">{e.company}</h3>
               <p className="expinfo">{e.content}</p>
               {e.username === localStorage.getItem('username') && (
-                <button onClick={() => deletepost(e._id)} className="logoutbtn" style={{ marginTop: '15px', padding: '6px 14px' }}> Delete My Post </button>
+                <button onClick={() => deletepost(e._id)} className="deletebtn"> Delete My Post </button>
               )}
             </div>
           ))}

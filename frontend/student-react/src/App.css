@@ -38,7 +38,6 @@ nav {
   text-decoration: none;
   color: #94a3b8;
   font-weight: 500;
-  transition: color 0.2s;
 }
 
 .navlinks a:hover {
@@ -50,16 +49,28 @@ nav {
   background: rgba(79, 70, 229, 0.1);
   border: 1px solid rgba(79, 70, 229, 0.2);
   color: #4f46e5;
-  margin: 0;
-  width: auto;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .logoutbtn:hover {
   background: rgba(79, 70, 229, 0.2);
+}
+
+.deletebtn {
+  padding: 6px 16px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.deletebtn:hover {
+  background: #dc2626;
 }
 
 .dbh {
@@ -77,12 +88,10 @@ nav {
   border-radius: 8px;
   font-weight: 500;
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-  transition: all 0.2s ease;
 }
 
 .subbtn:hover {
   background: #4338ca;
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
   transform: translateY(-2px);
 }
 
@@ -96,40 +105,27 @@ nav {
   background: #ffffff;
   padding: 32px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.02);
-  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.dbres:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 3px 6px rgba(0, 0, 0, 0.04);
 }
 
 .restitle {
   font-size: 1.2rem;
   margin-bottom: 16px;
   color: #1e293b;
-  line-height: 1.4;
 }
 
 .openbtn {
   display: inline-block;
-  width: fit-content;
   padding: 8px 16px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   text-decoration: none;
   color: #475569;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.openbtn:hover {
-  background: #f1f5f9;
 }
 
 .explist {
@@ -142,110 +138,54 @@ nav {
   background: #ffffff;
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.02);
-  margin-bottom: 0;
-  position: relative;
-}
-
-.dbexp:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 3px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
 }
 
 .compname {
   font-size: 1.4rem;
   margin-bottom: 14px;
-  color: #1e293b;
 }
 
 .expinfo {
-  color: #475569;
   line-height: 1.8;
-  font-size: 1.05rem;
   white-space: pre-wrap;
 }
 
-.loginpg1 {
+.loginpg1, .loginpg2 {
   background: #ffffff;
   width: 100%;
   max-width: 500px;
   padding: 40px 30px;
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  margin: 40px auto;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.loginpg2 {
-  background: #ffffff;
-  width: 100%;
-  max-width: 650px;
-  padding: 40px 30px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  margin: 40px auto;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.login {
-  background: #ffffff;
-  width: 100%;
-  max-width: 450px;
-  padding: 40px 30px;
-  border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
   text-align: center;
-  margin: 60px auto;
-}
-
-.login input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-}
-
-.login button {
-  width: 100%;
-  padding: 12px;
-  background: #1e3a8a;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.msg1 {
-  margin-top: 20px;
-  cursor: pointer;
-  color: #1e3a8a;
-}
-
-.fcont {
-  text-align: left;
+  margin: 40px auto;
 }
 
 .finp {
   margin-bottom: 16px;
 }
 
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
 .marqueecont {
-  background: linear-gradient(90deg, #1e3a8a, #132b6e);
+  background: #1e3a8a;
   color: white;
   padding: 10px 0;
   overflow: hidden;
   white-space: nowrap;
-  font-weight: 500;
-  font-size: 0.9rem;
 }
 
 .marqueetext {
   display: inline-block;
-  animation: marquee 15s linear infinite;
+  animation: marquee 10s linear infinite;
 }
 
 @keyframes marquee {
@@ -265,42 +205,17 @@ nav {
   border-top: 1px solid #374151;
   font-size: 0.85rem;
   z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .db {
-  padding-bottom: 80px;
+  padding-bottom: 100px;
 }
 
 @media (max-width: 600px) {
-  .dbh {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-  }
-
   .navlinks {
     gap: 15px;
     font-size: 0.9rem;
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .res {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .dbres,
-  .dbexp {
-    padding: 20px;
-  }
-
-  .loginpg1,
-  .loginpg2 {
-    padding: 24px 16px;
-    margin: 20px 10px;
   }
 }

@@ -36,7 +36,7 @@ function Resources() {
               <h3 className="restitle">{r.title}</h3>
               <a href={r.link} target="_blank" className="openbtn">Open resource</a>
               {r.username === localStorage.getItem('username') && (
-                <button onClick={() => deletepost(r._id)} className="logoutbtn" style={{ marginTop: '15px', padding: '6px 14px' }}> Delete My Post </button>
+                <button onClick={() => deletepost(r._id)} className="deletebtn"> Delete My Post </button>
               )}
             </div>
           ))}
