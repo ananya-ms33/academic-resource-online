@@ -6,8 +6,8 @@ function Navbar() {
   const navigate = useNavigate()
 
   return (
-    <div className="header-container">
-      <h1 className="project-title">CSE Nexus</h1>
+    <div className="headercont">
+      <h1 className="projtitle">CSE Nexus</h1>
       
       <nav>
         <div className="navlinks">
@@ -20,8 +20,8 @@ function Navbar() {
         <button onClick={() => { localStorage.removeItem('isAdmin'); navigate("/") }} className="logoutbtn"> Logout </button>
       </nav>
 
-      <div className="marquee-container">
-        <div className="marquee-text">
+      <div className="marqueecont">
+        <div className="marqueetext">
           Happy Learning! 🎉 Support the CSE Department by sharing quality resources! 🚀 Stay updated for more features!
         </div>
       </div>

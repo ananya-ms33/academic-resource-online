@@ -1,5 +1,5 @@
 /* Sticky Header Styles */
-.header-container {
+.headercont {
   position: sticky;
   top: 0;
   background-color: #111827;
@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-.project-title {
+.projtitle {
   text-align: center;
   margin: 0;
   padding: 15px 0 5px 0;
@@ -211,6 +211,47 @@ nav {
 
 .subbtn2 {
   margin-top: 24px;
+}
+
+/* Marquee Styles */
+.marqueecont {
+  background: linear-gradient(90deg, #1e3a8a, #1d4ed8);
+  color: white;
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.marqueetext {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Sticky Footer Styles */
+.stickyfooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #111827;
+  color: #9ca3af;
+  text-align: center;
+  padding: 12px 0;
+  border-top: 1px solid #374151;
+  font-size: 0.85rem;
+  z-index: 1000;
+}
+
+/* Adjust page content to prevent overlap with sticky footer */
+.db {
+  padding-bottom: 80px;
 }
 
 @media (max-width: 600px) {
