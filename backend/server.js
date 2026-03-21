@@ -32,7 +32,11 @@ app.get('/resources', (req, res) => {
 })
 
 app.post('/addresource', (req, res) => {
-    db.collection('resources').insertOne({ title: req.body.title, link: req.body.link })
+    db.collection('resources').insertOne({
+        title: req.body.title,
+        link: req.body.link,
+        username: req.body.username
+    })
         .then(() => {
             res.send("resource added")
         })
@@ -49,7 +53,11 @@ app.get('/experiences', (req, res) => {
 })
 
 app.post('/addexperience', (req, res) => {
-    db.collection('experiences').insertOne({ company: req.body.company, content: req.body.content })
+    db.collection('experiences').insertOne({
+        company: req.body.company,
+        content: req.body.content,
+        username: req.body.username
+    })
         .then(() => {
             res.send("experience added")
         })

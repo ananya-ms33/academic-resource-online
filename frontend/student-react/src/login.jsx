@@ -23,6 +23,7 @@ function Login() {
         const data = await res.json()
 
         if (data.success) {
+            localStorage.setItem('username', username); // Save who is logged in!
             if (data.role === "student") {
                 navigate("/resources")
             }

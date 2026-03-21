@@ -18,7 +18,11 @@ function ShareExperience() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ company, content })
+      body: JSON.stringify({ 
+        company, 
+        content,
+        username: localStorage.getItem('username') // Tell the backend who I am
+      })
     })
 
     alert("Experience shared!")

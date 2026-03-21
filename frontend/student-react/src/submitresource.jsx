@@ -21,7 +21,11 @@ function SubmitResource() {
         "Content-Type": "application/json"
       },
 
-      body: JSON.stringify({ title, link })
+      body: JSON.stringify({ 
+        title, 
+        link,
+        username: localStorage.getItem('username') // Tell the backend who I am
+      })
 
     })
 
