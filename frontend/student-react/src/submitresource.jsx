@@ -27,10 +27,10 @@ function SubmitResource() {
                     <h2>Submit Learning Resource</h2>
                     <div className="fcont">
                         <div className="finp">
-                            <input placeholder="Resource Title (e.g. OS Notes)" onChange={(e) => settitle(e.target.value)} />
+                            <input placeholder="Resource Title Like 'SEM 4 FST'" onChange={(e) => settitle(e.target.value)} />
                         </div>
                         <div className="finp">
-                            <input placeholder="Resource Link (Drive/GitHub)" onChange={(e) => setlink(e.target.value)} />
+                            <input placeholder="Resource Link - Can be One Drive, Google Drive, etc." onChange={(e) => setlink(e.target.value)} />
                         </div>
                         <button className="subbtn" style={{ width: '100%' }} onClick={add}> Add Resource </button>
                     </div>
