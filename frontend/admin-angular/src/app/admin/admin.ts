@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
   expCount = computed(() => this.expArr().length);
 
   ngOnInit() {
-    //if we login as admin from the login pg
+    //if we login as admin from the login pg and isadmin is set to true
     const params = new URLSearchParams(window.location.search);
     if (params.get('auth') === 'admin') {
       localStorage.setItem('isAdmin', 'true');
@@ -54,7 +54,7 @@ export class AdminComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('isAdmin'); // Clear the "remember me" flag
+    localStorage.removeItem('isAdmin'); // isadmin is removed 
     window.location.href = CONFIG.STUDENT_APP_URL;
   }
 }
