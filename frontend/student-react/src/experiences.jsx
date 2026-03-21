@@ -1,14 +1,16 @@
 import {useEffect,useState} from "react"
 import Navbar from "./navbar"
+import './App.css';
+
 function Experiences(){
 
-const [exp,setexp]=useState([])
+const [arr,setArr]=useState([])
 
 useEffect(()=>{
 
 fetch("http://localhost:3000/experiences")
 .then(res=>res.json())
-.then(data=>setexp(data))
+.then(data=>setArr(data))
 
 },[])
 
@@ -16,22 +18,25 @@ return(
 
 <div>
 <Navbar/>
-<h2>Placement Experiences</h2>
+<div className="db">
+  
+  <div className="dbh">
+    <h2>Placement Experiences</h2>
+    <a href="/shareexperience" className="subbtn">+ Share Experience</a>
+  </div>
 
-<a href="/shareexperience">Share Experience</a>
+  <div className="explist">
+  {arr.map((e)=>(
 
-{exp.map((e)=>(
+  <div className="dbexp" key={e._id}>
+    <h3 className="compname">{e.company}</h3>
+    <p className="expinfo">{e.content}</p>
+  </div>
 
-<div key={e._id}>
-
-<p>{e.company}</p>
-
-<p>{e.content}</p>
+  ))}
+  </div>
 
 </div>
-
-))}
-
 </div>
 
 )

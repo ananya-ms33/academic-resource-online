@@ -1,0 +1,83 @@
+.admincont {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.adheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 30px;
+}
+
+.adstats {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+
+.adwrap {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.onead {
+  flex: 1;
+  min-width: 300px;
+}
+
+.text1 {
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+.emptysg {
+  margin-bottom: 20px;
+}
+
+.adcont2 {
+  padding: 20px;
+}
+
+.adtitle {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.adtitle2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.adlink {
+  display: block;
+  margin-bottom: 16px;
+  color: #4f46e5;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.adtext {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+}
+
+.deletebtn {
+  background: #ef4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+.deletebtn:hover {
+  background: #dc2626;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+  transform: translateY(-2px);
+}

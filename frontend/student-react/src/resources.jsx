@@ -1,42 +1,50 @@
-import {useEffect,useState} from "react"
+import { useEffect, useState } from "react"
 import Navbar from "./navbar"
-function Resources(){
+import './App.css';
 
-const [resources,setresources]=useState([])
+function Resources() {
 
-useEffect(()=>{
+  const [arr, setArr] = useState([])
 
-fetch("http://localhost:3000/resources")
-.then(res=>res.json())
-.then(data=>setresources(data))
+  useEffect(() => {
 
-},[])
+    fetch("http://localhost:3000/resources")
+      .then(res => res.json())
+      .then(data => setArr(data))
 
-return(
+  }, [])
 
-<div>
-<Navbar/>
-<h2>Resources</h2>
+  return (
 
-<a href="/submitresource">Submit Resource</a>
+    <div>
+      <Navbar />
+      <div className="db">
 
-<br/><br/>
+        <div className="dbh">
+          <h2>Learning Resources</h2>
+          <a href="/submitresource" className="subbtn">Submit Resource</a>
+        </div>
 
-{resources.map((r)=>(
+        <div className="res">
+          {arr.map((r) => (
 
-<div key={r._id} style={{border:"1px solid #ccc",padding:"10px",marginBottom:"10px"}}>
+            <div className="dbres" key={r._id}>
 
-<p>{r.title}</p>
+              <h3 className="restitle">{r.title}</h3>
 
-<a href={r.link} target="_blank">Open</a>
+              <a href={r.link} target="_blank" className="openbtn">
+                Open resource
+              </a>
 
-</div>
+            </div>
 
-))}
+          ))}
+        </div>
 
-</div>
+      </div>
+    </div>
 
-)
+  )
 
 }
 

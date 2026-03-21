@@ -1,84 +1,82 @@
-import {useState} from "react"
-import {useNavigate} from "react-router-dom"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-function Login(){
+function Login() {
 
-const [username,setusername]=useState("")
-const [password,setpassword]=useState("")
+    const [username, setusername] = useState("")
+    const [password, setpassword] = useState("")
+    const [loginorcreate, setloginorcreate] = useState(true)
 
-const navigate=useNavigate()
+    const navigate = useNavigate()
 
-const handlelogin=async(e)=>{
+    async function handlelogin(e) {
+        e.preventDefault()
 
-e.preventDefault()
+        const res = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username, password })
+        })
 
-const res = await fetch("http://localhost:3000/login",{
+        const data = await res.json()
 
-method:"POST",
+        if (data.success) {
+            if (data.role === "student") {
+                navigate("/resources")
+            }
+            if (data.role === "admin") {
+                window.location.href = "http://localhost:4200" //redirect to angular part 
+            }
+        } else {
+            alert("invalid login")
+        }
+    }
 
-headers:{
-"Content-Type":"application/json"
-},
+    async function handleregister(e) {
+        e.preventDefault()
 
-body:JSON.stringify({username,password})
+        const res = await fetch("http://localhost:3000/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username, password })
+        })
 
-})
+        const data = await res.json()
 
-const data = await res.json()
+        if (data.success) {
+            alert("Account successfully created! Login.")
+            setloginorcreate(true) // set to login true
+        } else {
+            alert("Error creating account.")
+        }
+    }
 
-if(data.success){
+    return (
+        <div className="login">
+            <h2>{loginorcreate ? "Welcome Back" : "Create Account"}</h2>
 
-if(data.role==="student"){
-navigate("/resources")
-}
+            <form onSubmit={loginorcreate ? handlelogin : handleregister}>
 
-if(data.role==="admin"){
-window.location.href="http://localhost:4200"
-}
+                <input type="text" placeholder="Enter Username" value={username} onChange={(e) => setusername(e.target.value)} required />
+                <br />
+                <input type="password" placeholder="Enter password" value={password} onChange={(e) => setpassword(e.target.value)} required />
+                <br />
 
-}
+                <button type="submit">{loginorcreate ? "Login" : "Sign Up"}</button>
 
-else{
+            </form>
 
-alert("invalid login")
+            <p className="msg1" onClick={() => setloginorcreate(!loginorcreate)}>
+                {loginorcreate ? "Create account" : "Log in"}
+            </p>
 
-}
+        </div>
 
-}
-
-return(
-
-<div>
-
-<h2>Login</h2>
-
-<form onSubmit={handlelogin}>
-
-<input
-placeholder="username"
-value={username}
-onChange={(e)=>setusername(e.target.value)}
-/>
-
-<br/>
-
-<input
-type="password"
-placeholder="password"
-value={password}
-onChange={(e)=>setpassword(e.target.value)}
-/>
-
-<br/>
-
-<button>Login</button>
-
-</form>
-
-</div>
-
-)
-
+    )
 }
 
 export default Login

@@ -1,44 +1,47 @@
-import { Component } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { CommonModule } from '@angular/common'
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './admin.html'
+  imports: [],
+  templateUrl: './admin.html',
+  styleUrl: './admin.css'
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
+  resArr = signal<any[]>([]);
+  expArr = signal<any[]>([]);
+  http = inject(HttpClient);
 
-  resources: any[] = []
-  experiences: any[] = []
+  // computed - sginals update automatically when there is a change in resArr or expArr
+  resCount = computed(() => this.resArr().length);
+  expCount = computed(() => this.expArr().length);
 
-  constructor(private http: HttpClient) {
-    this.loadData()
+  ngOnInit() {
+    this.http.get<any[]>('http://localhost:3000/resources').subscribe(data => {
+      this.resArr.set(data);
+    });
+
+    this.http.get<any[]>('http://localhost:3000/experiences').subscribe(data => {
+      this.expArr.set(data);
+    });
   }
 
-  // Load data from server
-  loadData() {
-    this.http.get('http://localhost:3000/resources').subscribe((data: any) => {
-      this.resources = data
-    })
-
-    this.http.get('http://localhost:3000/experiences').subscribe((data: any) => {
-      this.experiences = data
-    })
+  deleteresource(id: any) {
+    this.http.delete('http://localhost:3000/deleteresource/' + id).subscribe(() => {
+      // We update the signal directly instead of refreshing the page
+      this.resArr.set(this.resArr().filter(r => r._id !== id));
+    });
   }
 
-  // Delete resource
-  deleteresource(id: string) {
-    this.http.delete(`http://localhost:3000/deleteresource/${id}`).subscribe(() => {
-      this.resources = this.resources.filter(r => r._id !== id)
-    })
+  deleteexperience(id: any) {
+    this.http.delete('http://localhost:3000/deleteexperience/' + id).subscribe(() => {
+      // We update the signal directly instead of refreshing the page
+      this.expArr.set(this.expArr().filter(e => e._id !== id));
+    });
   }
 
-  // Delete experience
-  deleteexperience(id: string) {
-    this.http.delete(`http://localhost:3000/deleteexperience/${id}`).subscribe(() => {
-      this.experiences = this.experiences.filter(e => e._id !== id)
-    })
+  logout() {
+    window.location.href = 'http://localhost:5173';
   }
 }

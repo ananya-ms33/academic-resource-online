@@ -1,61 +1,55 @@
-import {useState} from "react"
+import { useState } from "react"
 import Navbar from "./navbar"
-function ShareExperience(){
+import { useNavigate } from "react-router-dom"
+import './App.css';
 
-const [company,setcompany]=useState("")
-const [content,setcontent]=useState("")
+function ShareExperience() {
 
-const handlesubmit=async(e)=>{
+  const [company, setcompany] = useState("")
+  const [content, setcontent] = useState("")
+  const navigate = useNavigate()
 
-e.preventDefault()
+  async function handlesubmit(e) {
 
-await fetch("http://localhost:3000/addexperience",{
+    e.preventDefault()
 
-method:"POST",
+    await fetch("http://localhost:3000/addexperience", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ company, content })
+    })
 
-headers:{
-"Content-Type":"application/json"
-},
+    alert("Experience shared!")
+    navigate("/experiences")
 
-body:JSON.stringify({company,content})
+  }
 
-})
+  return (
 
-alert("experience submitted")
+    <div>
+      <Navbar />
 
-}
+      <div className="db">
+        <div className="loginpg2">
+          <h2 className="fhead">Share Experience</h2>
+          <form onSubmit={handlesubmit} className="fcont">
 
-return(
+            <input type="text" placeholder="Company Name" value={company} onChange={(e) => setcompany(e.target.value)} required className="finp" />
 
-<div>
-<Navbar/>
-<h2>Share Experience</h2>
+            <textarea placeholder="Share your experience" value={content} onChange={(e) => setcontent(e.target.value)} required className="taip"></textarea>
 
-<form onSubmit={handlesubmit}>
+            <button type="submit" className="subbtn2">Share Experience</button>
 
-<input
-placeholder="company"
-value={company}
-onChange={(e)=>setcompany(e.target.value)}
-/>
+          </form>
 
-<br/>
+        </div>
+      </div>
 
-<textarea
-placeholder="experience"
-value={content}
-onChange={(e)=>setcontent(e.target.value)}
-/>
+    </div>
 
-<br/>
-
-<button>Submit</button>
-
-</form>
-
-</div>
-
-)
+  )
 
 }
 

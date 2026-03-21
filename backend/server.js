@@ -1,143 +1,96 @@
 const express = require('express')
 const cors = require('cors')
-const { MongoClient,ObjectId } = require('mongodb')
-
+const { MongoClient, ObjectId } = require('mongodb')
 const app = express()
 
 app.use(express.json())
 app.use(cors())
 
-let db
-
+var db
 MongoClient.connect('mongodb://localhost:27017')
+    .then((client) => {
+        db = client.db('academicresourcehub')
+        app.listen(3000, () => { console.log('backend running on port 3000') })
+    })
+    .catch((err) => console.log(err))
 
-.then(client=>{
-
-db = client.db('academicresourcehub')
-
-app.listen(3000,()=>{
-console.log("server running on port 3000")
+app.get('/resources', (req, res) => {
+    var arr = []
+    db.collection('resources').find().forEach(t => {
+        arr.push(t)
+    })
+        .then(() => {
+            res.json(arr)
+        })
 })
 
+app.post('/addresource', (req, res) => {
+    db.collection('resources').insertOne({ title: req.body.title, link: req.body.link })
+        .then(() => {
+            res.send("resource added")
+        })
 })
 
-.catch(err=>console.log(err))
-
-
-app.get('/resources',async(req,res)=>{
-
-const data = await db.collection('resources').find().toArray()
-
-res.json(data)
-
+app.get('/experiences', (req, res) => {
+    var arr = []
+    db.collection('experiences').find().forEach(t => {
+        arr.push(t)
+    })
+        .then(() => {
+            res.json(arr)
+        })
 })
 
-
-app.post('/addresource',async(req,res)=>{
-
-await db.collection('resources').insertOne({
-
-title:req.body.title,
-link:req.body.link
-
+app.post('/addexperience', (req, res) => {
+    db.collection('experiences').insertOne({ company: req.body.company, content: req.body.content })
+        .then(() => {
+            res.send("experience added")
+        })
 })
 
-res.send("resource added")
-
+app.delete('/deleteresource/:id', (req, res) => {
+    db.collection('resources').deleteOne({ _id: new ObjectId(req.params.id) })
+        .then(() => {
+            res.json({ message: "deleted" })
+        })
 })
 
-
-app.get('/experiences',async(req,res)=>{
-
-const data = await db.collection('experiences').find().toArray()
-
-res.json(data)
-
+app.delete('/deleteexperience/:id', (req, res) => {
+    db.collection('experiences').deleteOne({ _id: new ObjectId(req.params.id) })
+        .then(() => {
+            res.json({ message: "deleted" })
+        })
+})
+//if user found sends true and then the role of the user if not sends false sso that itll display the error msg
+app.post('/login', (req, res) => {
+    db.collection('users').findOne({ username: req.body.username, password: req.body.password })
+        .then((user) => {
+            if (user) {
+                res.json({ success: true, role: user.role })
+            } else {
+                res.json({ success: false })
+            }
+        })
 })
 
-
-app.post('/addexperience',async(req,res)=>{
-
-await db.collection('experiences').insertOne({
-
-company:req.body.company,
-content:req.body.content
-
-})
-
-res.send("experience added")
-
-})
-
-
-app.delete('/deleteresource/:id',async(req,res)=>{
-
-await db.collection('resources').deleteOne({
-_id:new ObjectId(req.params.id)
-})
-
-res.send("deleted")
-
+app.post('/register', (req, res) => {
+    db.collection('users').insertOne({ username: req.body.username, password: req.body.password, role: "student" })
+        .then(() => {
+            res.json({ success: true })
+        })
 })
 
 
-app.delete('/deleteexperience/:id',async(req,res)=>{
-
-await db.collection('experiences').deleteOne({
-_id:new ObjectId(req.params.id)
+//count documents to count the result
+app.get('/stats', (req, res) => {
+    db.collection('resources').countDocuments().then(resCount => {
+        db.collection('experiences').countDocuments().then(expCount => {
+            res.send(`<body>
+                <h2>Platform Statistics</h2>
+                <p>Total Resources Shared: ${resCount}</p>
+                <p>Total Placement Experiences: ${expCount}</p>
+                </body>`)
+        })
+    })
 })
 
-res.send("deleted")
-
-})
-app.post('/login',async(req,res)=>{
-
-const user = await db.collection('users').findOne({
-
-username:req.body.username,
-password:req.body.password
-
-})
-
-if(user){
-
-res.json({
-success:true,
-role:user.role
-})
-
-}
-
-else{
-
-res.json({
-success:false
-})
-
-}
-
-})
-
-app.delete("/deleteresource/:id", async (req,res)=>{
-
-await db.collection("resources").deleteOne({
-
-_id:new ObjectId(req.params.id)
-
-})
-
-res.send("deleted")
-
-})
-
-app.delete("/deleteexperience/:id", async (req,res)=>{
-
-await db.collection("experiences").deleteOne({
-
-_id:new ObjectId(req.params.id)
-
-})
-
-res.send("deleted")
-
-})

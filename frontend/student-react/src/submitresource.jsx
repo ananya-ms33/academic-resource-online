@@ -1,61 +1,62 @@
-import {useState} from "react"
+import { useState } from "react"
 import Navbar from "./navbar"
-function SubmitResource(){
+import { useNavigate } from "react-router-dom"
+import './App.css';
 
-const [title,settitle]=useState("")
-const [link,setlink]=useState("")
+function SubmitResource() {
 
-const handlesubmit=async(e)=>{
+  const [title, settitle] = useState("")
+  const [link, setlink] = useState("")
+  const navigate = useNavigate()
 
-e.preventDefault()
+  async function handlesubmit(e) {
 
-await fetch("http://localhost:3000/addresource",{
+    e.preventDefault()
 
-method:"POST",
+    await fetch("http://localhost:3000/addresource", {
 
-headers:{
-"Content-Type":"application/json"
-},
+      method: "POST",
 
-body:JSON.stringify({title,link})
+      headers: {
+        "Content-Type": "application/json"
+      },
 
-})
+      body: JSON.stringify({ title, link })
 
-alert("submitted")
+    })
 
-}
+    alert("Resource submitted successfully!")
+    navigate("/resources")
 
-return(
+  }
 
-<div>
-<Navbar/>
-<h2>Submit Resource</h2>
+  return (
 
-<form onSubmit={handlesubmit}>
+    <div>
+      <Navbar />
 
-<input
-placeholder="title"
-value={title}
-onChange={(e)=>settitle(e.target.value)}
-/>
+      <div className="db">
+        <div className="loginpg1">
 
-<br/>
+          <h2 className="fhead">Submit Resource</h2>
 
-<input
-placeholder="link"
-value={link}
-onChange={(e)=>setlink(e.target.value)}
-/>
 
-<br/>
+          <form onSubmit={handlesubmit} className="fcont">
 
-<button>Submit</button>
+            <input type="text" placeholder="Resource Title" value={title} onChange={(e) => settitle(e.target.value)} required />
 
-</form>
+            <input type="text" placeholder="Resource Link (URL)" value={link} onChange={(e) => setlink(e.target.value)} required />
 
-</div>
+            <button type="submit" className="subbtn2">Submit Resource</button>
 
-)
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  )
 
 }
 
