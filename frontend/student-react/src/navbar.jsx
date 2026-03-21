@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <div className="headercont">
       <h1 className="projtitle">CSE Nexus</h1>
-      
+
       <nav>
         <div className="navlinks">
           <Link to="/resources">Resources</Link>
@@ -22,7 +22,7 @@ function Navbar() {
 
       <div className="marqueecont">
         <div className="marqueetext">
-          Happy Learning! 🎉 Support the CSE Department by sharing quality resources! 🚀 Stay updated for more features!
+          Happy Learningg
         </div>
       </div>
     </div>

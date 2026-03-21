@@ -23,10 +23,11 @@ nav {
   background-color: #111827;
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centering the links */
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  gap: 40px; /* Gap between links and logout */
 }
 
 .navlinks {
@@ -217,7 +218,7 @@ nav {
 .marqueecont {
   background: linear-gradient(90deg, #1e3a8a, #1d4ed8);
   color: white;
-  padding: 8px 0;
+  padding: 10px 0;
   overflow: hidden;
   white-space: nowrap;
   font-weight: 500;
@@ -226,12 +227,11 @@ nav {
 
 .marqueetext {
   display: inline-block;
-  padding-left: 100%;
-  animation: marquee 20s linear infinite;
+  animation: marquee 15s linear infinite;
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
+  0% { transform: translateX(100vw); }
   100% { transform: translateX(-100%); }
 }
 
@@ -239,11 +239,12 @@ nav {
 .stickyfooter {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   background-color: #111827;
   color: #9ca3af;
   text-align: center;
-  padding: 12px 0;
+  padding: 15px 0;
   border-top: 1px solid #374151;
   font-size: 0.85rem;
   z-index: 1000;
