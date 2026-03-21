@@ -7,7 +7,7 @@ function Navbar() {
 
   return (
     <div className="headercont">
-      <h1 className="projtitle">CSE Nexus</h1>
+      <h1 className="projtitle">CSEA Resource Hub</h1>
 
       <nav>
         <div className="navlinks">
@@ -22,7 +22,7 @@ function Navbar() {
 
       <div className="marqueecont">
         <div className="marqueetext">
-          Happy Learningg
+          Happy Learning!
         </div>
       </div>
     </div>

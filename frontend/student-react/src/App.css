@@ -23,11 +23,11 @@ nav {
   background-color: #111827;
   padding: 10px 20px;
   display: flex;
-  justify-content: center; /* Centering the links */
+  justify-content: center;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 40px; /* Gap between links and logout */
+  gap: 40px;
 }
 
 .navlinks {
@@ -231,8 +231,13 @@ nav {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100vw); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* Sticky Footer Styles */
@@ -250,7 +255,7 @@ nav {
   z-index: 1000;
 }
 
-/* Adjust page content to prevent overlap with sticky footer */
+
 .db {
   padding-bottom: 80px;
 }
