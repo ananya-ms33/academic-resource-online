@@ -1,22 +1,18 @@
 import { useState } from "react"
 import Navbar from "./navbar"
-import { useNavigate } from "react-router-dom"
+import Footer from "./Footer"
 import './App.css';
 
 function SubmitResource() {
 
   const [title, settitle] = useState("")
   const [link, setlink] = useState("")
-  const navigate = useNavigate()
 
-  async function handlesubmit(e) {
-
+  function handlesubmit(e) {
     e.preventDefault()
 
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/addresource`, {
-
+    fetch(`${import.meta.env.VITE_API_URL}/addresource`, {
       method: "POST",
-
       headers: {
         "Content-Type": "application/json"
       },
@@ -28,40 +24,33 @@ function SubmitResource() {
       })
 
     })
-
-    alert("Resource submitted successfully!")
-    navigate("/resources")
+      .then(() => {
+        alert("Resource added successfully")
+        settitle("")
+        setlink("")
+      })
 
   }
 
   return (
-
     <div>
       <Navbar />
-
       <div className="db">
-        <div className="loginpg1">
 
-          <h2 className="fhead">Submit Resource</h2>
+        <h2 className="pgtitle">Submit Learning Resource</h2>
 
+        <form onSubmit={handlesubmit} className="subform">
+          <input type="text" placeholder="Resource Title (e.g. OS Notes)" value={title} onChange={(e) => settitle(e.target.value)} required />
+          <br />
+          <input type="text" placeholder="Resource Link (Drive/GitHub)" value={link} onChange={(e) => setlink(e.target.value)} required />
+          <br />
+          <button type="submit" className="subbtn">Add Resource</button>
+        </form>
 
-          <form onSubmit={handlesubmit} className="fcont">
-
-            <input type="text" placeholder="Resource Title" value={title} onChange={(e) => settitle(e.target.value)} required />
-
-            <input type="text" placeholder="Resource Link (URL) - Can be google drive, one drive etc." value={link} onChange={(e) => setlink(e.target.value)} required />
-
-            <button type="submit" className="subbtn2">Submit Resource</button>
-
-          </form>
-
-        </div>
       </div>
-
+      <Footer />
     </div>
-
   )
-
 }
 
 export default SubmitResource

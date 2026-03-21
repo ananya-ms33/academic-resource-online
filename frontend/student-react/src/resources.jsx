@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Navbar from "./navbar"
+import Footer from "./Footer"
 import './App.css';
 
 function Resources() {
@@ -53,6 +54,7 @@ function Resources() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   )
 

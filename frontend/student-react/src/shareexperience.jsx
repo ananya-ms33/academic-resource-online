@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Navbar from "./navbar"
+import Footer from "./Footer"
 import { useNavigate } from "react-router-dom"
 import './App.css';
 
@@ -21,7 +22,7 @@ function ShareExperience() {
       body: JSON.stringify({ 
         company, 
         content,
-        username: localStorage.getItem('username') // Tell the backend who I am
+        username: localStorage.getItem('username')
       })
     })
 
@@ -50,7 +51,7 @@ function ShareExperience() {
 
         </div>
       </div>
-
+      <Footer />
     </div>
 
   )

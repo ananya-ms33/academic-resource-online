@@ -1,5 +1,5 @@
-<div class="admincont">
-
+<div class="admin-header-container">
+  <h1 class="admin-project-title">CSE Nexus</h1>
   <div class="adheader">
     <h2 class="maintitle">Admin Dashboard</h2>
     <div class="adstats">
@@ -8,12 +8,12 @@
     </div>
     <button class="adlogoutbtn" (click)="logout()"> logout </button>
   </div>
+</div>
 
+<div class="admincont">
   <div class="adwrap">
-
     <div class="onead">
       <h3 class="text1">Manage Resources</h3>
-
       @for(r of resArr(); track $index) {
       <div class="adcard adcont2">
         <h4 class="adtitle">{{ r.title }}</h4>
@@ -29,12 +29,10 @@
         No resources available.
       </div>
       }
-
     </div>
 
     <div class="onead">
       <h3 class="text1">Manage Experiences</h3>
-
       @for(e of expArr(); track $index) {
       <div class="adcard adcont2">
         <h4 class="adtitle2">{{ e.company }}</h4>
@@ -51,7 +49,9 @@
       </div>
       }
     </div>
-
   </div>
-
 </div>
+
+<footer class="admin-sticky-footer">
+  <p>© 2026 CSE Nexus Admin | Secure Management Interface</p>
+</footer>

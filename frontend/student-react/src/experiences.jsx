@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Navbar from "./navbar"
+import Footer from "./Footer"
 import './App.css';
 
 function Experiences() {
@@ -38,10 +39,10 @@ function Experiences() {
               <p className="expinfo">{e.content}</p>
 
               {e.username === localStorage.getItem('username') && (
-                <button 
-                  onClick={() => deletepost(e._id)} 
-                  className="logoutbtn" 
-                  style={{marginTop: '15px', color: '#ef4444', borderColor: '#ef4444'}}
+                <button
+                  onClick={() => deletepost(e._id)}
+                  className="logoutbtn"
+                  style={{ marginTop: '15px', color: '#ef4444', borderColor: '#ef4444' }}
                 >
                   Delete My Post
                 </button>

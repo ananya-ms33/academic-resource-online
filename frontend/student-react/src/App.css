@@ -1,3 +1,34 @@
+/* Sticky Header Styles */
+.header-container {
+  position: sticky;
+  top: 0;
+  background-color: #111827;
+  z-index: 1000;
+  border-bottom: 1px solid #374151;
+  width: 100%;
+}
+
+.project-title {
+  text-align: center;
+  margin: 0;
+  padding: 15px 0 5px 0;
+  color: #60a5fa;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+nav {
+  background-color: #111827;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .navlinks {
   display: flex;
   gap: 30px;
@@ -152,7 +183,8 @@
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.loginpg1 h2, .loginpg2 h2 {
+.loginpg1 h2,
+.loginpg2 h2 {
   margin-bottom: 24px;
   font-size: 1.5rem;
   font-weight: 600;
@@ -198,11 +230,13 @@
     gap: 16px;
   }
 
-  .dbres, .dbexp {
+  .dbres,
+  .dbexp {
     padding: 20px;
   }
 
-  .loginpg1, .loginpg2 {
+  .loginpg1,
+  .loginpg2 {
     padding: 24px 16px;
     margin: 20px 10px;
   }
