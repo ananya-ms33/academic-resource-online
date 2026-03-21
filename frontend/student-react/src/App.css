@@ -182,7 +182,8 @@ nav {
   white-space: pre-wrap;
 }
 
-.loginpg1, .loginpg2 {
+.loginpg1,
+.loginpg2 {
   background: #ffffff;
   width: 100%;
   max-width: 500px;
@@ -197,7 +198,8 @@ nav {
   margin-bottom: 20px;
 }
 
-.finp input, .finp textarea {
+.finp input,
+.finp textarea {
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #cbd5e1;
@@ -212,7 +214,8 @@ nav {
   transition: border-color 0.2s;
 }
 
-.finp input:focus, .finp textarea:focus {
+.finp input:focus,
+.finp textarea:focus {
   border-color: #4f46e5;
   background: #ffffff;
   box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
@@ -252,8 +255,13 @@ nav {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100vw); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .stickyfooter {
@@ -276,7 +284,7 @@ nav {
   padding: 0 24px 120px 24px;
 }
 
-/* Tablet - fix logout button overlap */
+
 @media (max-width: 768px) {
   .projtitle {
     font-size: 1.6rem;
@@ -307,7 +315,7 @@ nav {
   }
 }
 
-/* Mobile phone */
+
 @media (max-width: 500px) {
   .projtitle {
     font-size: 1.2rem;
