@@ -1,16 +1,14 @@
-require('dotenv').config()
+//server.js
+require('dotenv').config() //allows us to use process.env
 const express = require('express')
 const cors = require('cors')
 const { MongoClient, ObjectId } = require('mongodb')
 const app = express()
-
 app.use(express.json())
 app.use(cors())
-
 var db
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017'
 const port = process.env.PORT || 3000
-
 MongoClient.connect(url)
     .then((client) => {
         db = client.db('academicresourcehub2')
@@ -20,7 +18,6 @@ MongoClient.connect(url)
         console.error("db connection error", err.message);
         process.exit(1);
     })
-
 app.get('/resources', (req, res) => {
     var arr = []
     db.collection('resources').find().forEach(t => {
@@ -30,7 +27,6 @@ app.get('/resources', (req, res) => {
             res.json(arr)
         })
 })
-
 app.post('/addresource', (req, res) => {
     db.collection('resources').insertOne({
         title: req.body.title,
@@ -41,7 +37,6 @@ app.post('/addresource', (req, res) => {
             res.send("resource added")
         })
 })
-
 app.get('/experiences', (req, res) => {
     var arr = []
     db.collection('experiences').find().forEach(t => {
@@ -51,7 +46,6 @@ app.get('/experiences', (req, res) => {
             res.json(arr)
         })
 })
-
 app.post('/addexperience', (req, res) => {
     db.collection('experiences').insertOne({
         company: req.body.company,
@@ -62,14 +56,12 @@ app.post('/addexperience', (req, res) => {
             res.send("experience added")
         })
 })
-
 app.delete('/deleteresource/:id', (req, res) => {
     db.collection('resources').deleteOne({ _id: new ObjectId(req.params.id) })
         .then(() => {
             res.json({ message: "deleted" })
         })
 })
-
 app.delete('/deleteexperience/:id', (req, res) => {
     db.collection('experiences').deleteOne({ _id: new ObjectId(req.params.id) })
         .then(() => {

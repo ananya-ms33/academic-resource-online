@@ -1,3 +1,4 @@
+//admin.ts
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CONFIG } from '../config';
@@ -16,19 +17,24 @@ export class AdminComponent implements OnInit {
 
   resCount = computed(() => this.resArr().length);
   expCount = computed(() => this.expArr().length);
-
+  //ngoninit runs when the pg loads 
   ngOnInit() {
+    //only if the ssr is done else it shows errorr as window isnt defined
+    if (typeof window === 'undefined') return;
+
     //if we login as admin from the login pg and isadmin is set to true
+    //params has everthing after ? in the url
     const params = new URLSearchParams(window.location.search);
     if (params.get('auth') === 'admin') {
-      localStorage.setItem('isAdmin', 'true');
+      localStorage.setItem('isadmin', 'true');
     }
 
-    if (localStorage.getItem('isAdmin') !== 'true') {
+    if (localStorage.getItem('isadmin') !== 'true') {
+      //window.location.href is the entire url
       window.location.href = CONFIG.STUDENT_APP_URL;
       return;
     }
-
+    //gets the data from /resources and stores it in resarr
     this.http.get<any[]>(`${CONFIG.API_URL}/resources`).subscribe(data => {
       this.resArr.set(data);
     });
@@ -51,7 +57,7 @@ export class AdminComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('isAdmin'); // isadmin is removed 
+    localStorage.removeItem('isadmin'); // isadmin is removed 
     window.location.href = CONFIG.STUDENT_APP_URL;
   }
 }

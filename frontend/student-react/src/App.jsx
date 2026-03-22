@@ -1,3 +1,4 @@
+//App.jsx
 import React, { Suspense } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 // react lazy downloads that page only when requiredd (usually everything gets downloaded)

@@ -1,3 +1,4 @@
+//resources.jsx
 import { useEffect, useState } from "react"
 import Navbar from "./navbar"
 import Footer from "./Footer"
@@ -35,6 +36,7 @@ function Resources() {
             <div className="dbres" key={r._id}>
               <h3 className="restitle">{r.title}</h3>
               <a href={r.link} target="_blank" className="openbtn">Open resource</a>
+              {/* delte option only for the posts that user have posted */}
               {r.username === localStorage.getItem('username') && (
                 <button onClick={() => deletepost(r._id)} className="deletebtn"> Delete My Post </button>
               )}

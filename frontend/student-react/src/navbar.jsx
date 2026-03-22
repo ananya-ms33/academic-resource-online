@@ -1,3 +1,4 @@
+//navbar.jsx
 import { Link, useNavigate } from "react-router-dom"
 import './App.css'
 
@@ -17,7 +18,7 @@ function Navbar() {
           <Link to="/shareexperience">Share Experience</Link>
         </div>
 
-        <button onClick={() => { localStorage.removeItem('isAdmin'); navigate("/") }} className="logoutbtn"> Logout </button>
+        <button onClick={() => { localStorage.removeItem('isadmin'); navigate("/") }} className="logoutbtn"> Logout </button>
       </nav>
 
       <div className="marqueecont">

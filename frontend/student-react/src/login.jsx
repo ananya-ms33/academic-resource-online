@@ -1,3 +1,4 @@
+//login.jsx
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import './App.css'
@@ -31,6 +32,7 @@ function Login() {
             if (data.role === "admin") {
                 window.location.href = `${import.meta.env.VITE_ADMIN_URL}?auth=admin`
             }
+            //auth=admin so that it is checked and then redirects to login page 
         } else {
             alert("invalid login")
         }
